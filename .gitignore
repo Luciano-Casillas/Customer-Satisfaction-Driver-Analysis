@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.env
+.vscode/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+docs/INTERVIEW_PREP.md
