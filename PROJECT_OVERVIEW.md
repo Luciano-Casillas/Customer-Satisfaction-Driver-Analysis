@@ -103,8 +103,7 @@ novastar-cx-pulse-analysis/
   config.toml               # Streamlit theme configuration
   data/
     voc_survey.csv          # 120,000-row synthetic dataset (seed=42)
-  docs/
-    PROJECT_OVERVIEW.md     # This file
+  PROJECT_OVERVIEW.md        # This file
 ```
 
 ---

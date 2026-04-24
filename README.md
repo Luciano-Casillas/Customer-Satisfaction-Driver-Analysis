@@ -8,7 +8,7 @@
 
 [NovaStar VOC Analytics Dashboard](https://your-app-url.streamlit.app) -- replace with deployed URL
 
-> For a full walkthrough of the methodology, findings, and business recommendations, see the **[Project Overview](docs/PROJECT_OVERVIEW.md)**.
+> For a full walkthrough of the methodology, findings, and business recommendations, see the **[Project Overview](PROJECT_OVERVIEW.md)**.
 
 ---
 
@@ -73,8 +73,7 @@ novastar-cx-pulse-analysis/
   config.toml               # Streamlit theme configuration
   data/
     voc_survey.csv          # 120,000-row synthetic dataset (seed=42)
-  docs/
-    PROJECT_OVERVIEW.md     # Full methodology and findings
+  PROJECT_OVERVIEW.md        # Full methodology and findings
 ```
 
 ---
