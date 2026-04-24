@@ -8,6 +8,8 @@
 
 [NovaStar VOC Analytics Dashboard](https://your-app-url.streamlit.app) -- replace with deployed URL
 
+> For a full walkthrough of the methodology, findings, and business recommendations, see the **[Project Overview](docs/PROJECT_OVERVIEW.md)**.
+
 ---
 
 ## Project Summary
