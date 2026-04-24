@@ -2,7 +2,7 @@
 
 ## Live Dashboard
 
-[NovaStar VOC Analytics Dashboard](https://your-app-url.streamlit.app) -- replace with deployed URL
+[NovaStar VOC Analytics Dashboard](https://your-app-url.streamlit.app) - replace with deployed URL
 
 ---
 
@@ -14,13 +14,22 @@ NovaStar Telecom surveys customers after every service interaction, but has no s
 
 ## Business Problem
 
-A Customer Insights Data Analyst at a VOC analytics firm answers: "Which customers are most likely to leave, why, and what should we do about it?" This project operationalizes that question for a telecom client with five specific outputs:
+A Customer Insights Data Analyst at a VOC analytics firm answers: "Which customers are most likely to leave, why, and what should we do about it?" This project turns that question into a structured analysis for a telecom client, delivering five specific findings:
 
-1. Which satisfaction drivers (resolution ease, wait time, FCR) predict Detractor status most strongly?
-2. Which channels and interaction types produce the highest Detractor concentrations?
-3. How much CLTV is at risk, and what is the ROI of a recovery outreach program?
-4. Which customers should the recovery team contact first?
-5. How does this framework translate to adjacent industries (specifically healthcare)?
+1. **Which satisfaction drivers predict Detractor status most strongly?**
+   Resolution ease is the single most powerful predictor (30.3% of model importance) - Detractors rate it 5.8/10 compared to 8.2/10 for Promoters, a 2.4-point gap. Wait time (19.7%) and first contact resolution (19.1%) round out the top three. Together, these three drivers explain 69% of Detractor risk.
+
+2. **Which channels and interaction types produce the highest Detractor concentrations?**
+   Call Center interactions produce the highest Detractor rate of any channel, driven by longer wait times and lower first contact resolution scores. Technical Support, Outage Follow-Up, and Cancellation Request are the highest-risk interaction reasons, each exceeding the 40.6% overall Detractor rate.
+
+3. **How much revenue is at risk, and what is the return on a recovery program?**
+   Detractor accounts represent more than $190M in annual customer lifetime value. At a 20% save rate and $25 per contact, a targeted recovery program returns approximately $36.8M in net value after all outreach costs - a strongly positive return even under conservative assumptions.
+
+4. **Which customers should the recovery team contact first?**
+   Customers in the top risk decile are 1.82x more likely to be Detractors than average. Contacting just the top 20% of scored customers captures 36.3% of all Detractors - more than double what a random outreach approach would yield. Priority 1 accounts combine high risk score with annual CLTV above $800.
+
+5. **How does this framework translate to adjacent industries?**
+   Every satisfaction driver in this model maps directly to a patient experience metric in the HCAHPS survey used by healthcare organizations. The same risk-scoring, driver importance, and recovery simulation approach applies to readmission prevention, discharge planning quality, and staff communication improvement programs.
 
 ---
 
@@ -50,7 +59,7 @@ See `data_dictionary.md` for complete column documentation including leakage fla
 ## Methodology
 
 **1. Data generation**
-Synthetic data is generated using `numpy.random.default_rng(42)`. Driver scores are drawn from Normal distributions with segment and channel-specific modifiers that create realistic correlations. The Detractor flag is modeled as a logistic function of a weighted composite driver score plus behavioral signals. This produces a dataset with an AUC of 0.81 -- realistic for a survey-based model.
+Synthetic data is generated using `numpy.random.default_rng(42)`. Driver scores are drawn from Normal distributions with segment and channel-specific modifiers that create realistic correlations. The Detractor flag is modeled as a logistic function of a weighted composite driver score plus behavioral signals. This produces a dataset with an AUC of 0.81 - realistic for a survey-based model.
 
 **2. Exploratory analysis**
 Driver score gaps between Detractor and Promoter populations were computed for all six drivers. Channel and interaction reason cross-tabs were used to identify high-friction combinations. Repeat contact frequency bands were analyzed for Detractor rate escalation.
@@ -68,7 +77,7 @@ Six-tab Streamlit dashboard with persistent KPI header, sidebar filters, and exp
 
 ## Key Findings
 
-1. **Resolution ease is the dominant driver.** Feature importance: 30.3%. Detractors score 5.8/10 on resolution ease vs. 8.2/10 for Promoters -- a 2.4-point gap. This is the single highest-ROI lever for CX improvement programs.
+1. **Resolution ease is the dominant driver.** Feature importance: 30.3%. Detractors score 5.8/10 on resolution ease vs. 8.2/10 for Promoters - a 2.4-point gap. This is the single highest-ROI lever for CX improvement programs.
 
 2. **Call Center drives disproportionate Detractor volume.** Call Center interactions produce the highest Detractor rate among all channels. Wait time and FCR scores are systematically lower for Call Center contacts due to volume and queue dynamics.
 
@@ -136,6 +145,66 @@ streamlit run app.py
 5. Click "Deploy"
 6. Add the deployed URL to the README and GitHub About section
 
+
 ---
 
-*Project version 1.0 -- Luciano Casillas | luciano.casillasjr@outlook.com | github.com/Aztexan512*
+## Recommendations
+
+Actions are sequenced by implementation timeline and expected business impact.
+
+**Immediate (0-30 Days)**
+
+- **Deploy risk scoring to the Call Center queue.**
+  Why: Call Center produces the highest Detractor rate of any channel, driven by wait times and first contact resolution scores that are systematically lower than all other channels. The trained model identifies top-decile customers who are 1.82x more likely to become Detractors than average. Routing these contacts to senior agents before they score low - rather than reacting after the survey comes back - shifts the program from reactive to preventive. No new technology is required; this is an API integration with the existing contact routing system.
+
+- **Launch a closed-loop recovery program for top-risk Detractors.**
+  Why: $190M in annual customer lifetime value is held by Detractor accounts. Without a systematic outreach program, the majority of that revenue is at risk of churn with no intervention. The model makes outreach efficient: contacting the top 20% of risk-scored customers recovers 36.3% of all Detractors - more than double what a random calling list would yield. At a 20% save rate and $25 per contact, total outreach costs approximately $1.2M against $38M in revenue protected, producing approximately $36.8M in net value.
+
+**Short-Term (30-90 Days)**
+
+- **Redesign resolution scripts for Billing Dispute interactions.**
+  Why: Resolution ease is the single strongest predictor of Detractor status, accounting for 30.3% of total model importance. Billing Dispute interactions drag both resolution ease and billing clarity scores below channel averages, producing one of the highest Detractor rates of any interaction reason. Empowering agents to resolve billing issues on the first contact - without requiring supervisor approval for credits up to $50 - directly closes the 2.4-point resolution ease gap between Detractors and Promoters, the largest improvement lever in the entire model.
+
+- **Add a repeat-contact flag to the CRM.**
+  Why: Customers who contacted NovaStar 3 or more times in the prior 90 days show a Detractor rate more than 2x the overall baseline of 40.6%. This friction pattern is visible before the interaction begins, yet agents currently have no way to see it. A CRM flag costs nothing to build once the data is connected and gives every agent immediate context - allowing them to open with acknowledgment rather than discovery, which is the single most effective way to change the emotional tone of a high-friction contact.
+
+**Strategic (90+ Days)**
+
+- **Build a continuous driver importance pipeline.**
+  Why: The current model reflects a fixed two-year snapshot of customer behavior. Driver importance rankings will shift as channel mix evolves. Digital experience currently accounts for only 2% of model importance - but Self-Serve App is the second-fastest growing channel in the dataset. A monthly retraining pipeline ensures the model reflects current customer behavior and that CX investment priorities stay aligned with where friction is actually occurring, not where it was two years ago.
+
+---
+
+## Adjacent Framework Portability
+
+The analytical methodology developed for NovaStar - driver importance ranking, risk decile scoring, and closed-loop recovery simulation - is not specific to telecom. Any industry that collects structured customer feedback and tracks financial value per account can apply the same approach with minimal adaptation.
+
+**Healthcare: Patient Experience (HCAHPS)**
+
+The most direct translation is to hospital patient experience analytics. Every NovaStar satisfaction driver maps to a published HCAHPS composite measure:
+
+| Telecom Driver | Healthcare Analogue (HCAHPS) |
+|---|---|
+| Resolution Ease | Care Coordination Score |
+| Wait Time Score | Response to Call Button |
+| First Contact Resolution | Discharge Planning Completeness |
+| Agent Professionalism | Staff Communication Quality |
+| Digital Experience | Patient Portal Usability |
+| Billing Clarity | Explanation of Charges |
+| Prior Contacts (90d) | 30-Day Readmission Risk |
+
+The business problem is identical: which patients are most at risk of a poor outcome, why, and what intervention should happen first? The same risk-scoring model, applied to HCAHPS survey data, produces a prioritized outreach list for care coordinators - directly reducing preventable readmissions and improving CMS star ratings.
+
+**Additional Industries**
+
+The same framework applies to financial services (customer effort score post-transaction), retail and e-commerce (post-purchase NPS, return rate prediction), and B2B SaaS (renewal risk scoring using product usage and support ticket patterns).
+
+---
+
+## Next Steps
+
+A stakeholder presentation deck is planned as the next deliverable, translating these findings and recommendations into executive-ready slides with visualizations and business impact callouts for each key finding.
+
+---
+
+*Project version 1.0 - Luciano Casillas | luciano.casillasjr@outlook.com | github.com/Aztexan512*
