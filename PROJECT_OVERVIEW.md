@@ -41,7 +41,7 @@ A Customer Insights Data Analyst at a VOC analytics firm answers: "Which custome
 
 ---
 
-## Live Dashboard
+## Live Dashboard - coming soon
 
 The dashboard is organized across six tabs, each addressing a specific layer of the analysis. Sidebar filters apply across all tabs simultaneously, allowing any view to be scoped by customer segment, channel, region, plan tier, service type, or tenure.
 
