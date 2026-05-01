@@ -6,7 +6,7 @@
 
 ## Live Dashboard
 
-[NovaStar VOC Analytics Dashboard](https://your-app-url.streamlit.app) -- coming soon
+[NovaStar VOC Analytics Dashboard](https://l4jk7jnpschi6ot7do7zgq.streamlit.app/)
 
 > For a full walkthrough of the methodology, findings, and business recommendations, see the **[Project Overview](PROJECT_OVERVIEW.md)**.
 
