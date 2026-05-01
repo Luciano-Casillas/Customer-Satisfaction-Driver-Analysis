@@ -5,7 +5,7 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?logo=streamlit&logoColor=white)
 ![Plotly](https://img.shields.io/badge/Plotly-5.x-3F4F75?logo=plotly&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-GradientBoosting-F7931E?logo=scikit-learn&logoColor=white)
----
+![SQL](https://img.shields.io/badge/SQL-PostgreSQL%20%2F%20Snowflake-4169E1?logo=postgresql&logoColor=white)
 ![NPS](https://img.shields.io/badge/NPS-Voice%20of%20Customer-0077B3)
 ![CLTV](https://img.shields.io/badge/CLTV-Financial%20Modeling-08CAA9)
 ![HCAHPS](https://img.shields.io/badge/HCAHPS-Healthcare%20Application-4169E1)
