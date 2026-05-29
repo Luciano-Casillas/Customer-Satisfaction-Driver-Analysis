@@ -189,7 +189,7 @@ streamlit run app.py
 
 | Dashboard | Link |
 |---|---|
-| NovaStar VOC Analytics Explorer | [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cttgrkprwzdmmrdgg82cvs.streamlit.app/) |
+| NovaStar VOC Analytics Explorer | [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://vcmsmhd58rweepaelnzw6k.streamlit.app/) |
 
 <!-- STREAMLIT URL: Primary dashboard URL is active above. If a benchmarking dashboard is deployed, add a second row with its URL. -->
 
